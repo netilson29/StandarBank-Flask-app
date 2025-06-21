@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Login do Administrador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #2b2b2b;
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border-radius: 5px;
+      border: none;
+      background: #fff;
+      color: #333;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-weight: bold;
+      background: linear-gradient(145deg, #3e3e3e, #1a1a1a);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px #000;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    button:active {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <form class="box" action="/admin" method="POST">
+    <h2>Administração</h2>
+    <input type="password" name="senha" placeholder="Senha do Admin" required>
+    <button type="submit">Entrar</button>
+  </form>
+</body>
+</html>
