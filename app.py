@@ -6,8 +6,8 @@ import os
 
 app = Flask(__name__)
 
-# 🔗 Conexão com MongoDB Atlas
-uri = "mongodb+srv://kingaristides:King2025@cluster0.mongodb.net/?retryWrites=true&w=majority"
+# 🔗 Conexão com MongoDB Atlas (ajustada para o cluster correto)
+uri = "mongodb+srv://kingaristides:King2025@atualizacaobank0.sulu0rw.mongodb.net/?retryWrites=true&w=majority&appName=Atualizacaobank0"
 client = MongoClient(uri)
 db = client["painel"]
 colecao = db["standardbank_painel"]
