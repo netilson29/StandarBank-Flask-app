@@ -9,7 +9,7 @@ app = Flask(__name__)
 # 🔗 Conexão com MongoDB Atlas
 uri = "mongodb+srv://kingaristides:King2025@atualizacaobank0.sulu0rw.mongodb.net/?retryWrites=true&w=majority&appName=Atualizacaobank0"
 client = MongoClient(uri)
-db = client["painel"]
+db = client["Painel"]  # ✅ Corrigido aqui (de 'painel' para 'Painel')
 colecao = db["standardbank_painel"]
 
 @app.route("/")
