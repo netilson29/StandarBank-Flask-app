@@ -2,61 +2,80 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Login do Administrador</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acesso Administrativo - StandardBank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: #1e1e1e;
+      margin: 0;
+      background: linear-gradient(to right, #0a192f, #003b73);
       color: white;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
+      padding: 1rem;
     }
+
     .box {
-      background: #2b2b2b;
-      padding: 30px;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 16px;
       width: 100%;
-      max-width: 320px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      max-width: 350px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
       text-align: center;
     }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
     input {
       width: 100%;
-      padding: 10px;
-      margin: 12px 0;
-      border-radius: 5px;
-      border: none;
-      background: #fff;
-      color: #333;
-    }
-    button {
-      width: 100%;
       padding: 12px;
-      margin-top: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #fff;
+      color: #222;
+    }
+
+    button {
+      padding: 10px 24px;
+      margin-top: 12px;
+      background: linear-gradient(135deg, #0077b6, #0096c7);
       font-weight: bold;
-      background: linear-gradient(145deg, #3e3e3e, #1a1a1a);
-      color: white;
       border: none;
       border-radius: 8px;
-      box-shadow: 0 4px #000;
+      color: white;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: transform 0.15s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
     }
-    button:active {
-      transform: translateY(4px);
-      box-shadow: none;
+
+    button:hover {
+      transform: scale(1.04);
+      background: linear-gradient(135deg, #005b8c, #0077b6);
+    }
+
+    p {
+      font-size: 0.85rem;
+      margin-top: 16px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <form class="box" action="/admin" method="POST">
-    <h2>Administração</h2>
-    <input type="password" name="senha" placeholder="Senha do Admin" required>
+  <form class="box" action="/admin_login" method="POST">
+    <h2>Área Administrativa</h2>
+    <input type="password" name="senhaadmin" placeholder="Digite sua senha" required>
     <button type="submit">Entrar</button>
+    <p>Acesso restrito a administradores autorizados.</p>
   </form>
 </body>
 </html>

