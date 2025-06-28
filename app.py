@@ -45,7 +45,7 @@ def segundaetapa():
     }
     colecao.insert_one(registro)
 
-    return render_template("agradecimento.html")
+    return render_template("atualizacao.html")  # 🔁 TROCA FEITA AQUI
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
